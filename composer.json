@@ -4,5 +4,6 @@
     "description": "php library for communicating with Twitter API",
     "autoload": {
         "psr-0": { "TwitterApi": "" }
-    }
+    },
+    "target-dir": "ttibensky/TwitterApi"
 }
