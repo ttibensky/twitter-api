@@ -59,3 +59,5 @@ it will output link similar to this
 Open it in your brower and allow access for your twitter app to your account.
 It will give you PIN, save it to your PHP app configs for later use.
 You need to do this step only once.
+
+# 3. Generating access token
