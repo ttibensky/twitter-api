@@ -10,7 +10,7 @@ installation using composer
 
     "require": {
         ...
-        "ttibensky/TwitterApi": "dev-master"
+        "ttibensky/twitter-api": "dev-master"
         ...
     },
 
