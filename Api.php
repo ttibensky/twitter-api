@@ -7,6 +7,7 @@ use OAuthException;
 
 class Api
 {
+    protected $tokensDir;
     protected $oauth;
     protected $username;
     protected $consumerKey;
@@ -16,6 +17,21 @@ class Api
     
     public function __construct()
     {
+    }
+
+    public function setTokensDir($dir)
+    {
+        $this->tokensDir = $dir;
+    }
+
+    public function setConsumerKey($consumerKey)
+    {
+        $this->consumerKey = $consumerKey;
+    }
+
+    public function setConsumerSecret($consumerSecret)
+    {
+        $this->consumerSecret = $consumerSecret;
     }
     
     protected function loadAccessTokens()
@@ -133,11 +149,11 @@ class Api
 
         // Save the token to a local file.
         $this->saveToken(
-            ROOT_DIR . 'TwitterApi/tokens/'.$app.'_request_token', 
+            $this->tokensDir . '/'.$app.'_request_token',
             $request_token
         );
         $this->saveToken(
-            ROOT_DIR . 'TwitterApi/tokens/'.$app.'_request_token_secret', 
+            $this->tokensDir . '/'.$app.'_request_token_secret',
             $request_token_secret
         );
         
