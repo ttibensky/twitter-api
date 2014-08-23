@@ -18,6 +18,8 @@ installation using composer
 
 # Usage
 
+# 1. Generating request token
+
 First of all, you need to initialize Api class with some parameters:
 
 
@@ -43,3 +45,17 @@ To use your app, you will need to generate request token. To do so, use method b
 
 I suggest to create new file including only functionality for generating request token.
 You can find an examle here: https://gist.github.com/ttibensky/bd26217b4f47bcb65de7
+
+# 2. Generating pin
+
+when you run
+
+> php generateRequestToken.php
+
+it will output link similar to this
+
+> https://api.twitter.com/oauth/authorize?oauth_token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+Open it in your brower and allow access for your twitter app to your account.
+It will give you PIN, save it to your PHP app configs for later use.
+You need to do this step only once.
