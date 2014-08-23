@@ -9,6 +9,7 @@ class Api
 {
     protected $tokensDir;
     protected $oauth;
+    protected $appname;
     protected $username;
     protected $consumerKey;
     protected $consumerSecret;
@@ -17,6 +18,16 @@ class Api
     
     public function __construct()
     {
+    }
+
+    public function setAppName($appname)
+    {
+        $this->appname = $appname;
+    }
+
+    public function setUserName($username)
+    {
+        $this->username = $username;
     }
 
     public function setTokensDir($dir)
@@ -42,15 +53,15 @@ class Api
         ) {
             return;
         }
-        
-        $accessTokenFile = __DIR__.'/tokens/'.$this->username.'_access_token';
+
+        $accessTokenFile = $this->tokensDir . '/'.$this->username.'_access_token';
         if (! file_exists($accessTokenFile)) {
             throw new \Exception(
                 'File ' . $accessTokenFile . ' does not exists. Did you forgot to generate access token?'
             );
         }
-        
-        $accessTokenSecretFile = __DIR__.'/tokens/'.$this->username.'_access_token_secret';
+
+        $accessTokenSecretFile = $this->tokensDir . '//'.$this->username.'_access_token_secret';
         if (! file_exists($accessTokenSecretFile)) {
             throw new \Exception(
                 'File ' . $accessTokenSecretFile . ' does not exists. Did you forgot to generate access token?'
@@ -128,10 +139,8 @@ class Api
     /**
      * generate request token
      * print oauth link, access to application must be allowed manually
-     * 
-     * @param string $app twitter application identifier
      */
-    public function generateRequestToken($app)
+    public function generateRequestToken()
     {
         $this->oauth = new \OAuth(
             $this->consumerKey, 
@@ -149,11 +158,11 @@ class Api
 
         // Save the token to a local file.
         $this->saveToken(
-            $this->tokensDir . '/'.$app.'_request_token',
+            $this->tokensDir . '/'.$this->appname.'_request_token',
             $request_token
         );
         $this->saveToken(
-            $this->tokensDir . '/'.$app.'_request_token_secret',
+            $this->tokensDir . '/'.$this->appname.'_request_token_secret',
             $request_token_secret
         );
         
@@ -161,7 +170,7 @@ class Api
         print 'https://api.twitter.com/oauth/authorize?oauth_token=' . $request_token . "\n";
     }
     
-    public function generateAccessToken($app, $pin, $username)
+    public function generateAccessToken($pin)
     {
         $this->oauth = new \OAuth(
             $this->consumerKey, 
@@ -171,10 +180,10 @@ class Api
         );
 
         $request_token = file_get_contents(
-            ROOT_DIR . 'TwitterApi/tokens/'.$app.'_request_token'
+            $this->tokensDir . '/'.$this->username.'_request_token'
         );
         $request_token_secret = file_get_contents(
-            ROOT_DIR . 'TwitterApi/tokens/'.$app.'_request_token_secret'
+            $this->tokensDir . '/'.$this->username.'_request_token_secret'
         );
         
         $this->oauth->setToken($request_token, $request_token_secret);
@@ -188,11 +197,11 @@ class Api
 
         // Now store the access token into another file (or database or whatever):
         file_put_contents(
-            ROOT_DIR.'TwitterApi/tokens/'.$app.'_'.$username.'_access_token', 
+            $this->tokensDir . '/'.$this->appname.'_'.$this->username.'_access_token',
             $this->accessToken
         );
         file_put_contents(
-            ROOT_DIR.'TwitterApi/tokens/'.$app.'_'.$username.'_access_token_secret', 
+            $this->tokensDir . '/'.$this->appname.'_'.$this->username.'_access_token_secret',
             $this->accessTokenSecret
         );
 

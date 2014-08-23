@@ -26,7 +26,7 @@ First of all, you need to initialize Api class with some parameters:
     use TTibensky\TwitterApi\Api;
 
     $api = new Api();
-    $api->setTokensDir(__DIR__.'/tokens');
+    $api->setTokensDir(__DIR__.'/../tokens');
     $api->setConsumerKey('xxxxxxxxxxxxxxxxxxxxxxxxx');
     $api->setConsumerSecret('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
     
