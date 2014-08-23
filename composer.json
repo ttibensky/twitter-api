@@ -1,5 +1,5 @@
 {
-    "name": "ttibensky/TwitterApi",
+    "name": "ttibensky/twitter-api",
     "version": "0.1",
     "description": "php library for communicating with Twitter API",
     "autoload": {
