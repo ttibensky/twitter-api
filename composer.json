@@ -3,6 +3,6 @@
     "version": "0.1",
     "description": "php library for communicating with Twitter API",
     "autoload": {
-        "psr-0": { "ttibensky\\TwitterApi": "" }
+        "psr-0": { "TTibensky\\TwitterApi": "" }
     }
 }

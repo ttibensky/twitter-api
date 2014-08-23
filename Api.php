@@ -1,6 +1,6 @@
 <?php
 
-namespace ttibensky\TwitterApi;
+namespace TTibensky\TwitterApi;
 
 use Exception;
 use OAuthException;
