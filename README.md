@@ -8,10 +8,10 @@ php library for communicating with Twitter API
 
 installation using composer
 
-> "require": {
->     ...
->     "ttibensky/TwitterApi": "dev-master"
->     ...
-> },
+    "require": {
+        ...
+        "ttibensky/TwitterApi": "dev-master"
+        ...
+    },
 
 # Usage
