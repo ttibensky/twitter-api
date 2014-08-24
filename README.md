@@ -61,3 +61,9 @@ It will give you PIN, save it to your PHP app configs for later use.
 You need to do this step only once.
 
 # 3. Generating access token
+
+run generateAccessToken.php script and give it PIN as first argument like this
+
+> php generateAccessToken.php xxxxxxxx
+
+You can find an example here: https://gist.github.com/ttibensky/fee7bbeeffc53520ceff
