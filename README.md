@@ -20,4 +20,4 @@ installation using composer
 
 # Creating twitter bot
 
-http://google.sk
+https://github.com/ttibensky/twitter-api/wiki/Creating-twitter-bot
