@@ -18,52 +18,6 @@ installation using composer
 
 # Usage
 
-# 1. Generating request token
+# Creating twitter bot
 
-First of all, you need to initialize Api class with some parameters:
-
-
-    <?php
-
-    use TTibensky\TwitterApi\Api;
-
-    $api = new Api();
-    $api->setTokensDir(__DIR__.'/../tokens');
-    $api->setConsumerKey('xxxxxxxxxxxxxxxxxxxxxxxxx');
-    $api->setConsumerSecret('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-    
-    
-- token dir is a directory where request tokens and access tokens will be saved, be sure to put it away of web root
-- consumer key (API key) is your twitter app identifier, you can find it in your app details on http://dev.twitter.com
-- consumer secret is kinda password for using your app through api, you can find it in your app details on http://dev.twitter.com
-
-To use your app, you will need to generate request token. To do so, use method below:
-
-
-    $api->generateRequestToken('MyTestTwitterAppCustomName');
-
-
-I suggest to create new file including only functionality for generating request token.
-You can find an examle here: https://gist.github.com/ttibensky/bd26217b4f47bcb65de7
-
-# 2. Generating pin
-
-when you run
-
-> php generateRequestToken.php
-
-it will output link similar to this
-
-> https://api.twitter.com/oauth/authorize?oauth_token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-Open it in your brower and allow access for your twitter app to your account.
-It will give you PIN, save it to your PHP app configs for later use.
-You need to do this step only once.
-
-# 3. Generating access token
-
-run generateAccessToken.php script and give it PIN as first argument like this
-
-> php generateAccessToken.php xxxxxxxx
-
-You can find an example here: https://gist.github.com/ttibensky/fee7bbeeffc53520ceff
+http://google.sk
