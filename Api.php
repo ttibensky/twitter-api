@@ -249,9 +249,9 @@ class Api
     {
         try {
             $this->oauth->fetch($url, $args, $method);
-            return json_decode($this->oauth->getLastResponse());
+            return json_decode($this->oauth->getLastResponse(), true);
         } catch (OAuthException $exception) {
-            throw new Exception('Cannot fetch from twitter API: ' . $exception->getMessage());
+            throw new Exception('Cannot fetch from twitter API: ' . $exception->lastResponse);
         }
     }
     
@@ -344,6 +344,52 @@ class Api
         $this->fetch(
             'https://api.twitter.com/1.1/account/verify_credentials.json'
         );
+
+        return true;
+    }
+
+    /**
+     * retweet a tweet by provided ID
+     *
+     * @param  int  $id tweet ID
+     * @return bool     true on success, false on failure
+     */
+    public function retweet($id)
+    {
+        try {
+            $this->fetch(
+                'https://api.twitter.com/1.1/statuses/retweet/'.$id.'.json',
+                null,
+                OAUTH_HTTP_METHOD_POST
+            );
+        } catch (Exception $exc) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * follow twitter user by provided ID
+     *
+     * @param  int  $id twitter user ID
+     * @return bool     true on success, false on failure
+     */
+    public function follow($id)
+    {
+        try {
+            $args = array(
+                'user_id' => $id,
+                'follow'  => true
+            );
+            $this->fetch(
+                'https://api.twitter.com/1.1/friendships/create.json',
+                $args,
+                OAUTH_HTTP_METHOD_POST
+            );
+        } catch (Exception $exc) {
+            return false;
+        }
 
         return true;
     }
