@@ -334,7 +334,7 @@ class Api
             $this->tokensDir . '/'.$this->appname.'_'.$this->username.'_access_token',
             $this->accessToken
         );
-        $this->getToken(
+        $this->setToken(
             $this->tokensDir . '/'.$this->appname.'_'.$this->username.'_access_token_secret',
             $this->accessTokenSecret
         );
